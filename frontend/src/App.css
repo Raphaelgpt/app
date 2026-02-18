@@ -1,34 +1,74 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+/* Disable text selection on OS elements */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Window shadow */
+.window-shadow {
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-.App-link {
-    color: #61dafb;
+/* Taskbar hover effect */
+.taskbar-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.taskbar-btn:active {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Animation for desktop icons */
+@keyframes iconFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.desktop-icon {
+  animation: iconFadeIn 0.3s ease-out forwards;
+}
+
+/* Start menu animation */
+@keyframes startMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.start-menu {
+  animation: startMenuIn 0.2s ease-out forwards;
+}
+
+/* Broadcast overlay animation */
+@keyframes broadcastIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.broadcast-overlay {
+  animation: broadcastIn 0.3s ease-out forwards;
 }

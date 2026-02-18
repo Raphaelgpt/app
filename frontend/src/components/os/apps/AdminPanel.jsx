@@ -260,70 +260,64 @@ export const AdminPanel = () => {
               </div>
             )}
 
-            {/* Users Table */}
+            {/* Users List */}
             <div className="flex-1 overflow-y-auto">
-              <table className="w-full">
-                <thead className="sticky top-0 bg-[#1a1a1a]">
-                  <tr className="text-left text-sm text-white/50 border-b border-white/10">
-                    <th className="py-2 px-3">Utilisateur</th>
-                    <th className="py-2 px-3">Rôle</th>
-                    <th className="py-2 px-3">Créé le</th>
-                    <th className="py-2 px-3 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((user) => (
-                    <tr 
-                      key={user.id} 
-                      data-testid={`user-row-${user.username}`}
-                      className="border-b border-white/5 hover:bg-white/5 transition-colors"
-                    >
-                      <td className="py-3 px-3">
-                        <div className="flex items-center gap-2">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                            user.role === 'admin' ? 'bg-[#60CDFF]/20' : 'bg-white/10'
-                          }`}>
-                            <span className="text-sm">{user.role === 'admin' ? '👑' : '👤'}</span>
-                          </div>
-                          <span>{user.username}</span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className={`px-2 py-0.5 rounded text-xs ${
-                          user.role === 'admin' 
-                            ? 'bg-[#60CDFF]/20 text-[#60CDFF]' 
-                            : 'bg-white/10 text-white/70'
-                        }`}>
-                          {user.role === 'admin' ? 'Admin' : 'Utilisateur'}
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 text-white/50 text-sm">
-                        {new Date(user.created_at).toLocaleDateString('fr-FR')}
-                      </td>
-                      <td className="py-3 px-3 text-right">
-                        <div className="flex items-center justify-end gap-1">
-                          <button
-                            data-testid={`edit-user-${user.username}`}
-                            onClick={() => handleEditUser(user)}
-                            className="p-1.5 rounded hover:bg-white/10 transition-colors"
-                          >
-                            <Edit className="w-4 h-4" />
-                          </button>
-                          {user.username !== 'SuperAdmin' && (
-                            <button
-                              data-testid={`delete-user-${user.username}`}
-                              onClick={() => handleDeleteUser(user.id)}
-                              className="p-1.5 rounded hover:bg-red-500/20 text-red-400 transition-colors"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {/* Header */}
+              <div className="grid grid-cols-4 gap-2 text-left text-sm text-white/50 border-b border-white/10 py-2 px-3 sticky top-0 bg-[#1a1a1a]">
+                <span>Utilisateur</span>
+                <span>Rôle</span>
+                <span>Créé le</span>
+                <span className="text-right">Actions</span>
+              </div>
+              {/* Rows */}
+              <div className="divide-y divide-white/5">
+                {users.map((user) => (
+                  <div 
+                    key={user.id} 
+                    data-testid={`user-row-${user.username}`}
+                    className="grid grid-cols-4 gap-2 items-center py-3 px-3 hover:bg-white/5 transition-colors"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        user.role === 'admin' ? 'bg-[#60CDFF]/20' : 'bg-white/10'
+                      }`}>
+                        <span className="text-sm">{user.role === 'admin' ? '👑' : '👤'}</span>
+                      </div>
+                      <span>{user.username}</span>
+                    </div>
+                    <div>
+                      <span className={`px-2 py-0.5 rounded text-xs ${
+                        user.role === 'admin' 
+                          ? 'bg-[#60CDFF]/20 text-[#60CDFF]' 
+                          : 'bg-white/10 text-white/70'
+                      }`}>
+                        {user.role === 'admin' ? 'Admin' : 'Utilisateur'}
+                      </span>
+                    </div>
+                    <div className="text-white/50 text-sm">
+                      {new Date(user.created_at).toLocaleDateString('fr-FR')}
+                    </div>
+                    <div className="flex items-center justify-end gap-1">
+                      <button
+                        data-testid={`edit-user-${user.username}`}
+                        onClick={() => handleEditUser(user)}
+                        className="p-1.5 rounded hover:bg-white/10 transition-colors"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </button>
+                      {user.username !== 'SuperAdmin' && (
+                        <button
+                          data-testid={`delete-user-${user.username}`}
+                          onClick={() => handleDeleteUser(user.id)}
+                          className="p-1.5 rounded hover:bg-red-500/20 text-red-400 transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

@@ -1,0 +1,166 @@
+{
+  "project_overview": {
+    "name": "Windows 11 Web Sim",
+    "theme": "Dark Mode (Windows 11 Fluent)",
+    "font_family": "\"Segoe UI Variable\", \"Segoe UI\", system-ui, sans-serif",
+    "emotional_tone": "Authentic, Modern, Clean, Systemic",
+    "design_persona": "E1 (Anti-AI Designer) - Focusing on 'Fusion over Imitation' but heavily grounded in 'Authenticity' for this specific simulation task."
+  },
+  "typography": {
+    "primary_font": "\"Segoe UI Variable\", \"Segoe UI\", system-ui, sans-serif",
+    "mono_font": "\"Consolas\", \"Cascadia Code\", monospace",
+    "scale": {
+      "h1": "text-4xl font-semibold tracking-tight",
+      "h2": "text-2xl font-semibold tracking-tight",
+      "h3": "text-xl font-semibold",
+      "body": "text-sm font-normal leading-normal",
+      "caption": "text-xs font-normal text-muted-foreground",
+      "ui_label": "text-[13px] font-normal"
+    }
+  },
+  "colors": {
+    "background": {
+      "desktop": "url('https://images.pexels.com/photos/28428587/pexels-photo-28428587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')",
+      "mica": "rgba(32, 32, 32, 0.75)",
+      "acrylic": "rgba(32, 32, 32, 0.6)",
+      "solid": "#202020",
+      "base": "#000000"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "rgba(255, 255, 255, 0.7)",
+      "disabled": "rgba(255, 255, 255, 0.35)",
+      "accent": "#60CDFF"
+    },
+    "border": {
+      "subtle": "rgba(255, 255, 255, 0.08)",
+      "default": "rgba(255, 255, 255, 0.12)",
+      "strong": "rgba(255, 255, 255, 0.2)"
+    },
+    "accent": {
+      "default": "#60CDFF",
+      "hover": "#4CC2FF",
+      "active": "#0091F8",
+      "subtle": "rgba(96, 205, 255, 0.1)"
+    },
+    "status": {
+      "success": "#6CCB5F",
+      "warning": "#FCE100",
+      "error": "#FF4D4F",
+      "info": "#60CDFF"
+    }
+  },
+  "visual_enhancers": {
+    "mica_effect": {
+      "className": "bg-[#202020]/75 backdrop-blur-2xl border border-white/10 shadow-2xl",
+      "description": "Simulates Windows 11 Mica material. Use for main app windows."
+    },
+    "acrylic_effect": {
+      "className": "bg-[#202020]/60 backdrop-blur-3xl border-t border-white/10",
+      "description": "Simulates Windows 11 Acrylic. Use for Taskbar and Start Menu."
+    },
+    "glass_panel": {
+      "className": "bg-black/40 backdrop-blur-xl border border-white/5 shadow-lg",
+      "description": "For internal panels or cards within the OS."
+    },
+    "rounded_corners": {
+      "window": "rounded-xl",
+      "button": "rounded-[4px]",
+      "panel": "rounded-lg"
+    },
+    "shadows": {
+      "window": "shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_20px_50px_rgba(0,0,0,0.5)]",
+      "flyout": "shadow-[0_0_0_1px_rgba(255,255,255,0.07),0_8px_16px_rgba(0,0,0,0.4)]"
+    }
+  },
+  "layout": {
+    "grid_system": "Use absolute positioning for Desktop Icons and Windows (simulated window manager). Use Flexbox/Grid for internal window layouts.",
+    "spacing": {
+      "taskbar_height": "h-12",
+      "window_padding": "p-0",
+      "internal_padding": "p-4"
+    }
+  },
+  "components": {
+    "Taskbar": {
+      "path": "/src/components/os/Taskbar.jsx",
+      "style": "fixed bottom-0 left-0 right-0 h-12 bg-[#202020]/80 backdrop-blur-2xl flex justify-center items-center z-50 border-t border-white/5",
+      "instructions": "Icons must be centered. Start button on the left of the center group. System tray on the far right."
+    },
+    "StartMenu": {
+      "path": "/src/components/os/StartMenu.jsx",
+      "style": "fixed bottom-14 left-1/2 -translate-x-1/2 w-[600px] h-[700px] bg-[#202020]/85 backdrop-blur-3xl rounded-xl border border-white/10 shadow-2xl z-50 overflow-hidden flex flex-col animate-in slide-in-from-bottom-5 fade-in duration-200",
+      "instructions": "Contains Pinned Apps grid (top) and Recommended files list (bottom). Search bar at the very top. User profile and Power button at the very bottom."
+    },
+    "Window": {
+      "path": "/src/components/os/Window.jsx",
+      "style": "absolute bg-[#202020]/95 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl overflow-hidden flex flex-col",
+      "instructions": "Must have a TitleBar (draggable handle), Content Area, and Resize handles (optional). Use framer-motion for drag constraints."
+    },
+    "DesktopIcon": {
+      "path": "/src/components/os/DesktopIcon.jsx",
+      "style": "flex flex-col items-center gap-1 w-20 p-2 rounded hover:bg-white/5 transition-colors cursor-pointer group",
+      "instructions": "Icon (32px or 48px) + Text Label (text-xs text-center text-white drop-shadow-md)."
+    },
+    "LockScreen": {
+      "path": "/src/components/os/LockScreen.jsx",
+      "style": "fixed inset-0 z-[100] bg-cover bg-center flex flex-col items-center justify-center text-white transition-all duration-500",
+      "instructions": "Shows large Time/Date. On click, slides up or fades to show Login Form (Glassmorphism card)."
+    }
+  },
+  "assets": {
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width={1.5} size={20}",
+      "instructions": "Use specific Lucide icons to mimic Windows: 'LayoutGrid' for Start, 'Search' for Search, 'AppWindow' for Task view, 'Folder' for Explorer."
+    },
+    "images": {
+      "wallpaper_desktop": "https://images.pexels.com/photos/28428587/pexels-photo-28428587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "wallpaper_lockscreen": "https://images.unsplash.com/photo-1638618527547-353b97140809?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODl8MHwxfHNlYXJjaHw0fHxXaW5kb3dzJTIwMTElMjBkYXJrJTIwYmx1ZSUyMGJsb29tJTIwYWJzdHJhY3QlMjB3YWxscGFwZXJ8ZW58MHx8fHwxNzcxNDIyNDUwfDA&ixlib=rb-4.1.0&q=85",
+      "user_avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80"
+    }
+  },
+  "animations": {
+    "library": "framer-motion",
+    "window_open": {
+      "initial": { "scale": 0.95, "opacity": 0, "y": 10 },
+      "animate": { "scale": 1, "opacity": 1, "y": 0 },
+      "exit": { "scale": 0.95, "opacity": 0, "y": 10 },
+      "transition": { "duration": 0.2, "ease": "easeOut" }
+    },
+    "start_menu": {
+      "initial": { "y": 20, "opacity": 0 },
+      "animate": { "y": 0, "opacity": 1 },
+      "exit": { "y": 20, "opacity": 0 },
+      "transition": { "duration": 0.25, "type": "spring", "stiffness": 300, "damping": 25 }
+    }
+  },
+  "accessibility": {
+    "focus_ring": "focus-visible:ring-2 focus-visible:ring-[#60CDFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#202020]",
+    "contrast": "Ensure text is pure white (#FFFFFF) on dark mica backgrounds."
+  },
+  "instructions_to_main_agent": [
+    "1. Setup: Install 'lucide-react' and 'framer-motion' immediately.",
+    "2. Global CSS: Add the custom CSS variables for 'mica' and 'acrylic' backgrounds in index.css if Tailwind classes aren't enough (though backdrop-blur usually works).",
+    "3. State Management: You MUST create a Context ('OSContext') to manage: 'currentRole' (admin/user), 'isLocked' (bool), 'openWindows' (array of objects), 'activeWindow' (id).",
+    "4. Component Structure: Create a layout wrapper that conditionally renders 'LockScreen' or 'Desktop'.",
+    "5. Desktop: The Desktop component should render the 'Taskbar' and a map of 'Window' components from the 'openWindows' state.",
+    "6. Windows 11 Logic: The 'Start Menu' is a toggle. Clicking outside it closes it. It is NOT a window, it's a floating overlay.",
+    "7. Admin Panel: This is just another 'Window' component but with restricted access. If currentRole !== 'admin', it should not open or show an error.",
+    "8. Broadcast: This is a full-screen overlay with high z-index (z-[9999]) that mimics a BSOD or System Alert.",
+    "9. File Explorer: Use a simple mock data structure for folders. Breadcrumbs are essential for the Win11 look.",
+    "10. CMD: Use a simple input loop. Parse commands 'help', 'cls', 'time', 'echo'.",
+    "11. DO NOT use generic Shadcn cards for Windows. Build custom 'Window' frames using the 'visual_enhancers' styles."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors: separates good from extraordinary.",
+    "Never use AI assistant Emoji characters like 🤖 etc.",
+    "Prioritize using pre-existing components from src/components/ui when applicable, but CUSTOMIZE them for the Windows 11 look."
+  ]
+}

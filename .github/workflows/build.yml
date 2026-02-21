@@ -1,0 +1,29 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build APK
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          wget https://services.gradle.org/distributions/gradle-8.1-bin.zip -O gradle.zip
+          unzip gradle.zip
+          export PATH="/data/data/com.termux/files/home/app/gradle-8.1/bin:/data/data/com.termux/files/usr/bin:/product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/apex/com.android.virt/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin"
+          ./gradlew assembleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: Win11Android-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
